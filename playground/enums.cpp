@@ -90,6 +90,7 @@ void test_typed_enum_class() {
 }
 
 int main() {
+  // Test some enum functions.
   test_basic_enum();
   test_numbered_enum();
   test_enum_range();
