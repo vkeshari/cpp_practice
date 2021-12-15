@@ -85,7 +85,7 @@ void test_typed_enum_class() {
   enum class Difficulty : char {EASY = 'A', MEDIUM = 'B', HARD = 'C'};
   Difficulty d1 {Difficulty::EASY};
   Difficulty d2 = static_cast<Difficulty>('D');
-  // Difficulty d2 {'E'}; Need to cast even if its the same type.
+  // Difficulty d2 {'E'}; Need to cast even if it's the same type.
   Difficulty d3 = static_cast<Difficulty>(5);
 }
 
