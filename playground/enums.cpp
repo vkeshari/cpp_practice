@@ -15,7 +15,7 @@ void test_basic_enum() {
     std::cout << "Can compare enum ints. c2 is bigger." << std::endl;
   }
   if (c1 == c3) {
-    std::cout << "Two enum ints are equal if value is equal." << std::endl;
+    std::cout << "Two enum ints are equal if value is equal. c1 is c3." << std::endl;
   }
 }
 
@@ -28,10 +28,10 @@ void test_numbered_enum() {
     std::cout << "Can compare enum value to int." << std::endl;
   }
 
-  // Color c2 {2}; Cannot assign int to an enum.
   int c2 = BLUE;
   std::cout << "Can assign unqualified enum to an integer." << std::endl;
 
+  // Color c2 {2}; Cannot assign int to an enum.
   Color c3 = static_cast<Color>(2); // Can assign int to an enum with cast.
   std::cout << "Can assign cast integer to an enum." << std::endl;
 

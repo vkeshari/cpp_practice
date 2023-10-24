@@ -1,5 +1,7 @@
+cc = clang++ -std=c++20
+
 enums:
-	g++ enums.cpp -o out/enums
+	${cc} enums.cpp -o out/enums
 
 clean:
 	rm out/*
