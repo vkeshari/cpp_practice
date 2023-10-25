@@ -11,7 +11,7 @@ void test_constexpr_scope() {
 
   std::cout << "PI is " << PI << std::endl;
   // std::cout << "SQRT_2 is " <<  SQRT_2 << std::endl; must use scope qualified name
-  std::cout << "SQRT_2 is " <<  const_scope::SQRT_2 << std::endl;
+  std::cout << "SQRT_2 is " << const_scope::SQRT_2 << std::endl;
 }
 
 // Note: constexpr functions should not have any side effects

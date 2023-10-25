@@ -9,5 +9,8 @@ constants:
 enums:
 	${cc} enums.cpp -o out/enums
 
+pointers:
+	${cc} pointers.cpp -o out/pointers
+
 clean:
 	rm out/*
