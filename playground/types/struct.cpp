@@ -14,14 +14,12 @@ struct Player {
 void test_struct() {
   std::cout << "TEST STRUCT" << std::endl;
   Player p("Sachin");
-  p.scores = new double[5]; // can direct-access everything (public by default)
+  p.scores = new double[3]; // can direct-access everything (public by default)
   p.scores[0] = 200;
   p.scores[1] = 186;
   p.scores[2] = 175;
-  p.scores[3] = 99;
-  p.scores[4] = 0;
   std::cout << p.name << " scored:";
-  for (double *s = p.scores; s < &p.scores[5]; ++s) {
+  for (double *s = p.scores; s < &p.scores[3]; ++s) {
     std::cout << " " << *s;
   }
   std::cout << std::endl;
