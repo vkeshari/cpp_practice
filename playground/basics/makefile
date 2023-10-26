@@ -12,5 +12,8 @@ enums:
 pointers:
 	${cc} pointers.cpp -o out/pointers
 
+namespaces:
+	${cc} namespaces.cpp -o out/namespaces
+
 clean:
 	rm out/*

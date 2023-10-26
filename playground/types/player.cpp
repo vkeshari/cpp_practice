@@ -39,9 +39,10 @@ void show_player(const Player& p) {
 
 } // namespace player
 
-namespace player_test {
+namespace { // put tests in anonymous namespace
 
 void test_player() {
+  std::cout << "TEST PLAYER" << std::endl;
   player::Player p {"Sachin"};
   p.AddScore(200);
   p.AddScore(186);
@@ -54,8 +55,8 @@ void test_player() {
   player::show_player(p);
 }
 
-} // namespace player_test
+} // namespace
 
 int main() {
-  player_test::test_player();
+  test_player();
 }
