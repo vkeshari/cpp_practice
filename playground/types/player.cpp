@@ -3,30 +3,34 @@
 namespace player {
 
 class Player {
+ private:
+  std::string name;
+  std::vector<int> scores;
+
  public:
   Player(std::string name) : name{name} { }
 
   int& operator[](int i) { // make operators refs
+    if (i >= scores.size()) {
+      throw std::out_of_range("Not enough scores for index");
+    }
     return scores[i];
   };
 
-  const std::string& Name() const { // make getters const, make returned ref const
+  const std::string& Name() const noexcept { // make getters const noexcept, make returned ref const
     return name;
   }
-  const std::vector<int>& Scores() const { // make getters const, make returned ref const
+  const std::vector<int>& Scores() const noexcept { // make getters const noexcept, make returned ref const
     return scores;
   }
-  int NumScores() const { // make getters const, no need to make returned value const
+  int NumScores() const noexcept { // make getters const noexcept, no need to make returned value const
     return scores.size();
   }
 
   void AddScore(int score) {
     scores.push_back(score);
   }
-
- private:
-  std::string name;
-  std::vector<int> scores;
+  
 };
 
 void show_player(const Player& p) {
@@ -53,6 +57,12 @@ void test_player() {
 
   p[3] = 0;
   player::show_player(p);
+
+  try {
+    p[5] = 0;
+  } catch (const std::out_of_range& e) {
+    std::cout << "Caught an out-of-range exception: " << e.what() << std::endl;
+  }
 }
 
 } // namespace
