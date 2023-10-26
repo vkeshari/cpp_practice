@@ -15,5 +15,8 @@ pointers:
 namespaces:
 	${cc} namespaces.cpp -o out/namespaces
 
+exceptions:
+	${cc} exceptions.cpp -o out/exceptions
+
 clean:
 	rm out/*
