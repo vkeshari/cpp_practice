@@ -30,7 +30,7 @@ class Player {
   void AddScore(int score) {
     scores.push_back(score);
   }
-  
+
 };
 
 void show_player(const Player& p) {
