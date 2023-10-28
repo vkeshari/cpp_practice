@@ -1,21 +1,21 @@
 cc = clang++ -std=c++20
 
-assignment:
+assignment: assignment.cpp
 	${cc} assignment.cpp -o out/assignment
 
-constants:
+constants: constants.cpp 
 	${cc} constants.cpp -o out/constants
 
-enums:
+enums: enums.cpp
 	${cc} enums.cpp -o out/enums
 
-pointers:
+pointers: pointers.cpp
 	${cc} pointers.cpp -o out/pointers
 
-namespaces:
+namespaces: namespaces.cpp
 	${cc} namespaces.cpp -o out/namespaces
 
-exceptions:
+exceptions: exceptions.cpp
 	${cc} exceptions.cpp -o out/exceptions
 
 clean:
