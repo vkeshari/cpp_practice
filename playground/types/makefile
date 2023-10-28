@@ -24,5 +24,11 @@ cricketer: cricketer.cpp person
 cricketer_test: cricketer_test.cpp cricketer
 	${cc} cricketer_test.cpp -o out/cricketer_test
 
+batter: batter.cpp cricketer
+	${cc} -c batter.cpp -o out/batter.o
+
+batter_test: batter_test.cpp batter
+	${cc} batter_test.cpp -o out/batter_test
+
 clean:
 	rm out/*

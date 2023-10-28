@@ -24,7 +24,7 @@ class Cricketer : public Person {
     return customName; // cannot build a string here since method returns a reference
   }
 
-  void Show() const {
+  virtual void Show() const override {
     std::cout << '[' << jerseyNo << ']' ;
     Person::Show(); // Call super-class method
   }

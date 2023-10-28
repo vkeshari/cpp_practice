@@ -20,6 +20,6 @@ class Bio {
   }
 
   inline void Show() const {
-    std::cout << '\t' << name << ": " << GetAge() << std::endl;
+    std::cout << '\t' << name << " (" << GetAge() << ')' << std::endl;
   }
 };

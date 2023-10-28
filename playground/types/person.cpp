@@ -24,7 +24,7 @@ class Person : public Human {
     return bio->GetAge(); // Can access unique_ptr members directly
   }
 
-  void Show() const {
+  virtual void Show() const {
     bio->Show();
   }
 };
