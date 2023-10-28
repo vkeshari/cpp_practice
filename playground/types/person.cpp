@@ -20,7 +20,7 @@ class Person : public Human {
     return bio->GetName(); // Can access unique_ptr members directly
   }
 
-  const int GetAge() const override {
+  int GetAge() const override {
     return bio->GetAge(); // Can access unique_ptr members directly
   }
 

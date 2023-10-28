@@ -16,7 +16,7 @@ class Cricketer : public Person {
 
   ~Cricketer() {}
 
-  const int GetJerseyNo() const {
+  int GetJerseyNo() const {
     return jerseyNo;
   }
 

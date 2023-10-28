@@ -13,5 +13,5 @@ class Human {
 
   virtual const std::string& GetName() const = 0;
 
-  virtual const int GetAge() const = 0;
+  virtual int GetAge() const = 0;
 };
