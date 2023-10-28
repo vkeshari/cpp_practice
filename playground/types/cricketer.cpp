@@ -6,7 +6,9 @@ class Cricketer : public Person {
   int jerseyNo;
 
  public:
-  Cricketer(const std::string& name, int year_of_birth, int jerseyNo) : Person{name, year_of_birth}, jerseyNo{jerseyNo} { }
+  Cricketer(const std::string& name, int year_of_birth, int jerseyNo) :
+      Person{name, year_of_birth}, // Initialize super-class with its constructor
+      jerseyNo{jerseyNo} { } // Initialize member variable like normal
 
   ~Cricketer() {}
 
@@ -16,6 +18,6 @@ class Cricketer : public Person {
 
   void Show() const {
     std::cout << '[' << jerseyNo << ']' ;
-    Person::Show();
+    Person::Show(); // Call super-class method
   }
 };
