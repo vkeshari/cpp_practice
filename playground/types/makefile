@@ -18,5 +18,11 @@ person: person.cpp bio
 person_test: person_test.cpp person
 	${cc} person_test.cpp -o out/person_test
 
+cricketer: cricketer.cpp person
+	${cc} -c cricketer.cpp -o out/cricketer.o
+
+cricketer_test: cricketer_test.cpp cricketer
+	${cc} cricketer_test.cpp -o out/cricketer_test
+
 clean:
 	rm out/*
