@@ -10,7 +10,7 @@ class Person : public Human {
 
   Person (Bio* bio) : bio{std::unique_ptr<Bio>(bio)} { } // Can assign pointer to unique_ptr
 
-  ~Person() { } // No need to destruct a unique_ptr
+  ~Person() { } // Destructor automatically destructs members
 
   const Bio& GetBio() const override {
     return *bio; // Can dereference unique_ptr directly
