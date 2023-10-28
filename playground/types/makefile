@@ -1,11 +1,14 @@
 cc = clang++ -std=c++20
 
+# simple struct
 struct: struct.cpp
 	${cc} struct.cpp -o out/struct
 
+# simple class
 player: player.cpp
 	${cc} player.cpp -o out/player
 
+# heirarchical classes
 bio: bio.cpp
 	${cc} -c bio.cpp -o out/bio.o
 
