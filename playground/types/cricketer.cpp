@@ -5,23 +5,36 @@
 class Cricketer : public Person {
  private:
   int jerseyNo;
-  std::string customName;
+  std::string nameWithJersey;
 
  public:
   Cricketer(const std::string& name, int year_of_birth, int jerseyNo) :
       Person{name, year_of_birth}, // Initialize super-class with its constructor
       jerseyNo{jerseyNo} {
-    customName = '[' + std::to_string(jerseyNo) + "] " + Person::GetName();
+    nameWithJersey = '[' + std::to_string(jerseyNo) + "] " + Person::GetName();
   } // Initialize member variable like normal
 
   ~Cricketer() override { }
 
-  int GetJerseyNo() const override {
+  // Can use default move and copy constructors even if base class has defined ones
+  Cricketer(const Cricketer&) = default;
+  Cricketer(Cricketer&&) = default;
+
+  bool operator==(const Cricketer& c) const {
+    // Can call base class's function with child's argument-type
+    return jerseyNo == c.GetJerseyNo() && Person::operator==(c);
+  }
+
+  bool operator!=(const Cricketer& c) const {
+    return !operator==(c);
+  }
+
+  int GetJerseyNo() const {
     return jerseyNo;
   }
 
   const std::string& GetName() const override { // override an overriden method
-    return customName; // cannot build a string here since method returns a reference
+    return nameWithJersey; // cannot build a string here since method returns a reference
   }
 
   virtual void Show() const override {
