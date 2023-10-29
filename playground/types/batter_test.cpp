@@ -51,10 +51,25 @@ void test_move() {
   d.Show();
 }
 
+void test_equals() {
+  std::cout << "TEST EQUALS" << std::endl;
+  Batter b1{"Kohli", 1987, 18, {183, 160, 157, 154}};
+  Batter b2{"Rohit", 1987, 45, {264, 209, 208, 171, 162, 159}};
+  Batter b3{"Kohli", 1987, 18, {183, 160, 157, 154}};
+  std::cout << "b1, b2, cb" << std::endl;
+  b1.Show();
+  b2.Show();
+  b3.Show();
+  std::cout << "b1 == b2 is " << (b1 == b2) << std::endl;
+  std::cout << "b1 == b3 is " << (b1 == b3) << std::endl;
+  std::cout << "b2 == b3 is " << (b2 == b3) << std::endl;
+}
+
 } // namespace
 
 int main() {
   test_batter();
   test_copy();
   test_move();
+  test_equals();
 }

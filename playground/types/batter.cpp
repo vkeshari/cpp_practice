@@ -35,6 +35,21 @@ class Batter : public Cricketer {
     b.highScores = nullptr;
   }
 
+  bool operator==(const Batter& b) const {
+    bool mismatch = false;
+    for (int i = 0; i < MAX_NUM_SCORES; ++i) {
+      if (highScores[i] != b.highScores[i]) {
+        mismatch = true;
+        break;
+      }
+    }
+    return !mismatch && Cricketer::operator==(b);
+  }
+
+  bool operator!=(const Batter& b) const {
+    return !operator==(b);
+  }
+
   void UpdateHighScores(std::initializer_list<int> scores) { // {} are initializer_list objects
     // Just logic, ignore
     int i = 0;
