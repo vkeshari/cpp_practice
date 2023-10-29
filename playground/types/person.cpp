@@ -13,11 +13,15 @@ class Person : public Human {
 
   ~Person() override { } // Destructor automatically destructs members
 
+  // Must define copy constructor because std::unique_ptr has a deleted one
   // Copy constructor
   Person(const Person& p) {
     Bio b {*p.bio};
     bio = std::make_unique<Bio>(b); // std::make_unique<> perserves memory outside scope
   }
+
+  // Move constructor can be default, but is defined for education
+  // Person(Person&& p) = default;
 
   // Move constructor
   Person(Person&& p) {
@@ -25,7 +29,7 @@ class Person : public Human {
   }
 
   bool operator==(const Person& p) const {
-    return *bio == p.GetBio();
+    return *bio == *p.bio;
   }
 
   bool operator!=(const Person& p) const {
