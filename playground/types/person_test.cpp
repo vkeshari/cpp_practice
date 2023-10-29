@@ -32,8 +32,10 @@ void test_move() {
   std::cout << "TEST MOVE" << std::endl;
   Person p = returns_a_kohli();
   Person q {p}; // copy-initialize after move
+  Person r = std::move(q);
   p.Show();
-  q.Show();
+  // q.Show(); Segfault as bio is nullptr
+  r.Show();
 }
 
 void test_equals() {

@@ -35,8 +35,10 @@ void test_move() {
   std::cout << "TEST MOVE" << std::endl;
   Bio b = returns_a_kohli();
   Bio c {b}; // copy-initialize after move
+  Bio d = std::move(c);
   b.Show();
-  c.Show();
+  c.Show(); // name will be empty
+  d.Show();
 }
 
 void test_equals() {

@@ -20,6 +20,21 @@ class Batter : public Cricketer {
     delete[] highScores;
   }
 
+  Batter(const Batter& b) :
+      Cricketer(b), // Simply call base class's copy constructor
+      highScores{new int[MAX_NUM_SCORES]} {
+    for (int i = 0; i < MAX_NUM_SCORES; ++i) {
+      highScores[i] = b.highScores[i];
+    }
+  }
+
+  Batter(Batter&& b) :
+      // Call base class's move constructor with std::move (weird!)
+      Cricketer(std::move(b)) {
+    highScores = b.highScores; // Just re-assign pointer for move operation
+    b.highScores = nullptr;
+  }
+
   void UpdateHighScores(std::initializer_list<int> scores) { // {} are initializer_list objects
     // Just logic, ignore
     int i = 0;

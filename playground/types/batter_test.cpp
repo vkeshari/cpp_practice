@@ -26,8 +26,35 @@ void test_batter() {
   b.Show();
 }
 
+void test_copy() {
+  std::cout << "TEST COPY" << std::endl;
+  Batter b{"Kohli", 1987, 18, {183, 160, 157, 154}};
+  Batter c {b}; // copy-initialize
+  Batter d = b; // copy-assign
+  b.Show();
+  c.Show();
+  d.Show();
+}
+
+Batter returns_a_kohli() {
+  Batter b{"Kohli", 1987, 18, {183, 160, 157, 154}};
+  return b; // Will invoke move constructor on return
+}
+
+void test_move() {
+  std::cout << "TEST MOVE" << std::endl;
+  Batter b = returns_a_kohli();
+  Batter c {b}; // copy-initialize after move
+  Batter d = std::move(c);
+  b.Show();
+  // c.Show(); Segfault (see person_test)
+  d.Show();
+}
+
 } // namespace
 
 int main() {
   test_batter();
+  test_copy();
+  test_move();
 }

@@ -22,7 +22,8 @@ class Cricketer : public Person {
 
   bool operator==(const Cricketer& c) const {
     // Can call base class's function with child's argument-type
-    return jerseyNo == c.GetJerseyNo() && Person::operator==(c);
+    // Can directly access base class's members (no need for getter)
+    return jerseyNo == c.jerseyNo && Person::operator==(c);
   }
 
   bool operator!=(const Cricketer& c) const {

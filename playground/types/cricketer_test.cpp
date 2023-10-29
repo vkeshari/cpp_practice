@@ -29,8 +29,10 @@ void test_move() {
   std::cout << "TEST MOVE" << std::endl;
   Cricketer c = returns_a_kohli();
   Cricketer d {c}; // copy-initialize after move
+  Cricketer e = std::move(d);
   c.Show();
-  d.Show();
+  // d.Show(); Segfault (see person_test)
+  e.Show();
 }
 
 void test_equals() {
