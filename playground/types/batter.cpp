@@ -1,7 +1,7 @@
 #include <iostream>
 #include "cricketer.cpp"
 
-constexpr int NUM_SCORES = 3;
+constexpr int MAX_NUM_SCORES = 3;
 
 class Batter : public Cricketer {
  private:
@@ -10,24 +10,27 @@ class Batter : public Cricketer {
  public:
   Batter(const std::string& name, int year_of_birth, int jerseyNo, std::initializer_list<int> scores) :
       Cricketer(name, year_of_birth, jerseyNo),
-      highScores{new int[NUM_SCORES]} { // RAII: Allocate memory in constructor
+      highScores{new int[MAX_NUM_SCORES]} { // RAII: Allocate memory in constructor
     UpdateHighScores(scores);
   }
 
-  ~Batter() {
-    delete[] highScores; // Must delete local memory as per RAII 
+  ~Batter() override {
+    // RAII: Must delete local memory,
+    // Delete array with delete[]
+    delete[] highScores;
   }
 
-  void UpdateHighScores(std::initializer_list<int> scores) {
+  void UpdateHighScores(std::initializer_list<int> scores) { // {} are initializer_list objects
+    // Just logic, ignore
     int i = 0;
     for (int s : scores) {
-      if (i == NUM_SCORES) {
+      if (i == MAX_NUM_SCORES) {
         break;
       }
       highScores[i] = s;
       ++i;
     }
-    for (; i < NUM_SCORES; ++i) {
+    for (; i < MAX_NUM_SCORES; ++i) {
       highScores[i] = 0;
     }
   }
@@ -36,10 +39,19 @@ class Batter : public Cricketer {
     return highScores[i];
   }
 
+  Batter& operator+=(int score) { // Can redefine operator to take arbitrary type
+    int i = 0;
+    for (; highScores[i] != 0 && i < MAX_NUM_SCORES; ++i);
+    if (i < MAX_NUM_SCORES) {
+      highScores[i] = score;
+    }
+    return *this; // this pointer
+  }
+
   void Show() const override {
     Cricketer::Show();
     std::cout << '\t';
-    for (int i = 0; i < NUM_SCORES; ++i) {
+    for (int i = 0; i < MAX_NUM_SCORES; ++i) {
       std::cout << '\t' << highScores[i];
     }
     std::cout << std::endl;

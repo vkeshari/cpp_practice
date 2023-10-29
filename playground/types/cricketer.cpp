@@ -14,9 +14,9 @@ class Cricketer : public Person {
     customName = '[' + std::to_string(jerseyNo) + "] " + Person::GetName();
   } // Initialize member variable like normal
 
-  ~Cricketer() {}
+  ~Cricketer() override { }
 
-  int GetJerseyNo() const {
+  int GetJerseyNo() const override {
     return jerseyNo;
   }
 

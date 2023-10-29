@@ -10,15 +10,19 @@ void test_batter() {
   b.Show();
 
   b.UpdateHighScores({183, 166, 160, 157, 154});
-  std::cout << "Batter " << b.GetName() << ", age " << b.GetAge() << " shows as: " << std::endl;
   b.Show();
 
   b.UpdateHighScores({183});
-  std::cout << "Batter " << b.GetName() << ", age " << b.GetAge() << " shows as: " << std::endl;
   b.Show();
 
-  b[0] = 0;
-  std::cout << "Batter " << b.GetName() << ", age " << b.GetAge() << " shows as: " << std::endl;
+  b += 166; // test insert with +=
+  b.Show();
+  b += 160;
+  b.Show();
+  b += 157; // should not insert
+  b.Show();
+
+  b[0] = 0; // test mutable index access
   b.Show();
 }
 
