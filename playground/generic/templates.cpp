@@ -87,6 +87,8 @@ void test_bad_container() {
   std::cout << "c2, m2:" << std::endl;
   c2.Show();
   m2.Show();
+  
+  // BadContainer b3 {1, 1.5, "hello"s}; Ambiguous type
 }
 
 void test_type_deduction() {
@@ -103,7 +105,31 @@ void test_type_deduction() {
   m1.Show();
 
   // BadContainer b2(3); There is no type to deduce
-  // BadContainer b3 {1, 1.5, "hello"s}; Ambiguous type
+}
+
+void test_alias() {
+  std::cout << "TEST ALIAS" << std::endl;
+  using BadIntContainer = BadContainer<int>;
+
+  BadIntContainer b1 {1, 2, 3};
+  std::cout << "b1 is:" << std::endl;
+  b1.Show();
+
+  BadIntContainer c1 {b1}; // test copy
+  BadIntContainer m1 = std::move(b1); // test move
+  std::cout << "c1, m1:" << std::endl;
+  c1.Show();
+  m1.Show();
+
+  BadIntContainer b2(3); // no elements, default to zero (why?)
+  std::cout << "b2 is:" << std::endl;
+  b2.Show();
+
+  BadIntContainer c2 {b2}; // test copy
+  BadIntContainer m2 = std::move(b2); // test move
+  std::cout << "c2, m2:" << std::endl;
+  c2.Show();
+  m2.Show();
 }
 
 } // namespace
@@ -111,4 +137,5 @@ void test_type_deduction() {
 int main() {
   test_bad_container();
   test_type_deduction();
+  test_alias();
 }
