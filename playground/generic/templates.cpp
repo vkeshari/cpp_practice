@@ -67,6 +67,7 @@ namespace {
 
 void test_bad_container() {
   std::cout << "TEST BAD CONTAINER" << std::endl;
+
   BadContainer<int> b1 {1, 2, 3};
   std::cout << "b1 is:" << std::endl;
   b1.Show();
@@ -77,7 +78,7 @@ void test_bad_container() {
   c1.Show();
   m1.Show();
 
-  BadContainer<int> b2(3);
+  BadContainer<int> b2(3); // no elements, default to zero (why?)
   std::cout << "b2 is:" << std::endl;
   b2.Show();
 
@@ -88,8 +89,26 @@ void test_bad_container() {
   m2.Show();
 }
 
+void test_type_deduction() {
+  std::cout << "TEST TYPE DEDUCTION" << std::endl;
+
+  BadContainer b1 {1, 2, 3}; // Parameter T not specified
+  std::cout << "b1 is:" << std::endl;
+  b1.Show();
+
+  BadContainer c1 {b1}; // test copy
+  BadContainer m1 = std::move(b1); // test move
+  std::cout << "c1, m1:" << std::endl;
+  c1.Show();
+  m1.Show();
+
+  // BadContainer b2(3); There is no type to deduce
+  // BadContainer b3 {1, 1.5, "hello"s}; Ambiguous type
+}
+
 } // namespace
 
 int main() {
   test_bad_container();
+  test_type_deduction();
 }
