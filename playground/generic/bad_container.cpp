@@ -87,7 +87,7 @@ void test_bad_container() {
   std::cout << "c2, m2:" << std::endl;
   c2.Show();
   m2.Show();
-  
+
   // BadContainer b3 {1, 1.5, "hello"s}; Ambiguous type
 }
 
@@ -121,7 +121,7 @@ void test_alias() {
   c1.Show();
   m1.Show();
 
-  BadIntContainer b2(3); // no elements, default to zero (why?)
+  BadIntContainer b2(3); // no elements but type already declared, default to zero (why?)
   std::cout << "b2 is:" << std::endl;
   b2.Show();
 

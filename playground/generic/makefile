@@ -1,7 +1,7 @@
 cc = clang++ -std=c++20
 
-templates: templates.cpp
-	${cc} templates.cpp -o out/templates
+bad_container: bad_container.cpp
+	${cc} bad_container.cpp -o out/bad_container
 
 clean:
 	rm out/*
