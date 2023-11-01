@@ -1,7 +1,9 @@
 #include<iostream>
 #include "simple_struct.cpp"
 
-// A function object that counts occurrences in a std::vector
+namespace counter { // Class and function together in a namespace
+
+// Class for a function object that counts occurrences in a std::vector
 template <typename T>
 class CountValues {
  private:
@@ -27,9 +29,18 @@ class CountValues {
   }
 };
 
-namespace {
+// A function template that counts values with a counter function object
+template <typename V, typename C>
+int count_values(const V& vec, const C& counter) {
+  return counter(vec); // A function object can be called like a function if operator() is defined
+}
 
-// A function template that prints a vector of generic type
+} // namespace counter
+
+namespace {
+using namespace counter;
+
+// Debug: A function template that prints a vector of generic type
 template <typename T>
 void show_vector(const std::vector<T>& vec) {
   std::cout << '\t' << '{';
@@ -37,12 +48,6 @@ void show_vector(const std::vector<T>& vec) {
     std::cout << v << ", ";
   }
   std::cout << '}' << std::endl;
-}
-
-// A function template that counts values with a counter function object
-template <typename V, typename C>
-int count_values(const V& vec, const C& counter) {
-  return counter(vec);
 }
 
 void test_count_ints() {
