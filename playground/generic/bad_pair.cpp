@@ -97,6 +97,40 @@ void test_right_alias() {
   m1.Show();
 }
 
+struct SimpleStruct {
+  int value1, value2;
+
+  SimpleStruct(int v1, int v2) : value1{v1}, value2{v2} { }
+  ~SimpleStruct() { }
+  SimpleStruct(const SimpleStruct&) = default;
+  SimpleStruct(SimpleStruct&&) = default;
+
+  const int GetValue1() const {return value1;}
+  const int GetValue2() const {return value2;}
+};
+
+// operator<< is the C++ equivalent of Java's toString() or Python's __str()__
+std::ostream& operator<<(std::ostream &os, const SimpleStruct &ss) {
+  return os << '{' + std::to_string(ss.GetValue1()) + ", " + std::to_string(ss.GetValue2()) + '}';
+}
+
+void test_class_deduction() {
+  std::cout << "TEST CLASS DEDUCTION" << std::endl;
+
+  SimpleStruct ss1 {1, 2};
+  SimpleStruct ss2 {3, 4};
+
+  BadPair<SimpleStruct, SimpleStruct> b1 {ss1, ss2};
+  std::cout << "b1 is:" << std::endl;
+  b1.Show();
+
+  BadPair<SimpleStruct, SimpleStruct> c1 {b1}; // test copy
+  BadPair<SimpleStruct, SimpleStruct> m1 = std::move(b1); // test move
+  std::cout << "c1, m1:" << std::endl;
+  c1.Show();
+  m1.Show();
+}
+
 } // namespace
 
 int main() {
@@ -104,4 +138,5 @@ int main() {
   test_type_deduction();
   test_left_alias();
   test_right_alias();
+  test_class_deduction();
 }
