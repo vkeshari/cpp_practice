@@ -15,7 +15,7 @@ bad_pair: bad_pair.cpp simple_struct
 functions: functions.cpp simple_struct
 	${cc} functions.cpp -o out/functions
 
-lambdas: lambdas.cpp simple_struct
+lambdas: lambdas.cpp
 	${cc} lambdas.cpp -o out/lambdas
 
 clean:

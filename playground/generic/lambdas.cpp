@@ -1,5 +1,4 @@
 #include<iostream>
-#include "simple_struct.cpp"
 
 namespace lambdas {
 
