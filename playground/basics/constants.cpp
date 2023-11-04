@@ -4,7 +4,7 @@ constexpr double PI = 3.14; // scope is global
 
 namespace const_scope {
   constexpr double SQRT_2 = 1.414; // scope is namespace (even for constexpr)
-} // namespace const_test
+} // namespace const_scope
 
 void test_constexpr_scope() {
   std::cout << "TEST CONSTEXPR SCOPE" << std::endl;
@@ -24,8 +24,8 @@ void test_constexpr_function() {
   std::cout << "TEST CONSTEXPR FUNCTION" << std::endl;
   std::cout << "PI squared is " << PI_SQUARE << std::endl;
 
-  double SQRT_3 = 1.732;
-  std::cout << "SQRT_3 squared is " << square(SQRT_3) << std::endl; // call constexpr function with any arg in code
+  double sqrt_3 = 1.732;
+  std::cout << "SQRT_3 squared is " << square(sqrt_3) << std::endl; // call constexpr function with any arg in code
 }
 
 void test_const_reference() {

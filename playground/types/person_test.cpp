@@ -34,7 +34,7 @@ void test_move() {
   Person q {p}; // copy-initialize after move
   Person r = std::move(q);
   p.Show();
-  // q.Show(); Segfault as bio is nullptr
+  // q.Show(); Segfault as q.bio is nullptr
   r.Show();
 }
 
