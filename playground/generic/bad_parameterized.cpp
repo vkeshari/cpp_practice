@@ -20,7 +20,7 @@ class BadParameterized {
     }
   }
 
-  ~BadParameterized() { } // destructor auto-destructs membersc
+  ~BadParameterized() { } // destructor auto-destructs members
 
   // Copy constructor for size N
   BadParameterized(const BadParameterized<T, N>& bad) {
