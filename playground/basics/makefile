@@ -18,5 +18,8 @@ namespaces: namespaces.cpp
 exceptions: exceptions.cpp
 	${cc} exceptions.cpp -o out/exceptions
 
+arrays: arrays.cpp
+	${cc} arrays.cpp -o out/arrays
+
 clean:
 	rm out/*
