@@ -8,11 +8,16 @@ template <typename T>
 // There is no way to measure length once passed to function (sizeof(arr) won't work), so also pass length
 void show_array(const T arr[], int l) {
 // void show_array(const T* arr, int l) { Alternative definition
-  std::cout << "\t(Size: " << l << ")\t{";
+  std::cout << "{";
   for (int i = 0; i < l; ++i) {
     std::cout << arr[i] << ", ";
   }
-  std::cout << "},\t(Element size: " << sizeof(T) << ')' << std::endl; // Can measure sizeof template
+  std::cout << "}" << std::endl;
+
+  std::cout << "\tSize: " << l << std::endl;
+  std::cout << "\tElement size: " << sizeof(T) << std::endl; // Can measure sizeof template
+  std::cout << "\tTotal Bytes: " << sizeof(T) * l << std::endl;
+  std::cout << std::endl;
 }
 
 void test_arrays() {
